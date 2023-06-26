@@ -26,3 +26,5 @@ dist-ssr
 # History
 .history/
 .history/*
+
+.clasp.json
