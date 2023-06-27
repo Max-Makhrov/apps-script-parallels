@@ -5,4 +5,5 @@ Google Apps Script HTML Sidebar with Svelte in Vite.
 ## 
 Branches:
 
- * [Naked](https://github.com/Max-Makhrov/apps-script-parallels/tree/naked-svelte-singlefile):  Vite + Svelte + Singlefile
+ * 🩻[Naked](https://github.com/Max-Makhrov/apps-script-parallels/tree/naked-svelte-singlefile):  Vite + Svelte + Singlefile
+ * 👶🏼[svelte-sidebar](https://github.com/Max-Makhrov/apps-script-parallels/tree/svelte-sidebar): all in Version 1 + Code for mocking the sidebar and `apps.script.run` in the dev environment.
