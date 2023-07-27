@@ -1,26 +1,17 @@
 <script>
-  import { production, runGas } from './gas'
-  let name = 'World';
-  async function testAppsScript() {
-    try {
-      name = await runGas("beep", "Dev Server", "Hello");
-    } catch (err) {
-      console.log(err);
-    }
-  }
+  import { production } from "./gas";
+  import TestParallelExecutions from "./Components/TestParallelExecutions.svelte";
 </script>
 
-
-
 <div class:sidebar={!production} class="wrapper">
-  <p>Hello, {name}!</p>
-  <button on:click={testAppsScript}>google.script.run</button>
+  <div class="content">
+    <TestParallelExecutions />
+  </div>
 </div>
-
-
 
 <style>
   .wrapper {
+    overflow-x: auto;
     width: 100%;
     height: 100%;
     max-width: 300px;
@@ -35,5 +26,10 @@
     top: 0;
     bottom: 0;
     border: 1px solid bisque;
+  }
+
+  .content {
+    padding: 15px;
+    display: flex;
   }
 </style>
