@@ -20,3 +20,40 @@ code .
 ```
 
 Change `🌵` to the branch name = Version
+
+After installation, test it in VS Code terminal. Run:
+```npm run dev, and
+npm run build
+```
+
+Notice the “`dist`” folder and the file created after the “`build`” command run:
+`dist\ui\index.html`
+
+Use `clasp` to install your code inside Google Sheet's script.
+
+### 🔖Memo. Clasp. Saving to Google
+
+Install (once):\
+`npm install -g @google/clasp`\
+Get the version to check is installed:\
+`clasp -v`\
+Login:\
+`clasp login`
+
+Create a project + link it to the current local project:\
+`clasp create`\
+Add “`.clasp.json`” to “`.gitignore`” if you use GitHub.\
+Add the root “`.claspignore`” file with the text:
+```
+**/**
+!appsscript.json
+!dist/**/**
+```
+
+Build the project:\
+`npm run build`\
+Optionally commit to GitHub. Update the remote project:\
+`clasp push`\
+Open:\
+`clasp open`\
+Launch in the container (Spreadsheet)
