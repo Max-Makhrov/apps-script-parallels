@@ -29,9 +29,12 @@ npm run build
 Notice the “`dist`” folder and the file created after the “`build`” command run:
 `dist\ui\index.html`
 
-Use `clasp` to install your code inside Google Sheet's script.
+----
+
 
 ### 🔖Memo. Clasp. Saving to Google
+
+Use `clasp` to install your code inside Google Sheet's script.
 
 Install (once):\
 `npm install -g @google/clasp`\
