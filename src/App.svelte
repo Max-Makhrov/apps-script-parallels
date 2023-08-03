@@ -1,11 +1,13 @@
 <script>
   import { production } from "./gas";
   import ConcurrencyLimit from "./Components/ConcurrencyLimit.svelte";
+  import SpeedComparison from "./Components/SpeedComparison.svelte";
 </script>
 
 <div class:sidebar={!production} class="wrapper">
   <div class="content">
     <ConcurrencyLimit />
+    <SpeedComparison />
   </div>
 </div>
 
