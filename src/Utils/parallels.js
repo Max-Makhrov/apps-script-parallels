@@ -1,6 +1,10 @@
 // Based on:
 // https://maximorlov.com/parallel-tasks-with-pure-javascript
 
+import { writable, get } from "svelte/store";
+
+export let tasksRunning = writable(0);
+
 /**
  * @param {Array} tasks
  * @param {Number} concurrency
@@ -13,12 +17,13 @@ export async function limit(tasks, concurrency = 10) {
     for (const [index, task] of tasksIterator) {
       // console.log(index, "launched");
       await doTask(index, task);
-      console.log(index, "done");
     }
   }
 
   async function doTask(index, task) {
+    tasksRunning.set(get(tasksRunning) + 1);
     results[index] = await task();
+    tasksRunning.set(get(tasksRunning) - 1);
   }
 
   const workers = new Array(concurrency).fill(tasks.entries()).map(runTasks);

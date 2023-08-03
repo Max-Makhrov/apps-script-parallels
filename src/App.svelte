@@ -1,11 +1,11 @@
 <script>
   import { production } from "./gas";
-  import TestParallelExecutions from "./Components/TestParallelExecutions.svelte";
+  import ConcurrencyLimit from "./Components/ConcurrencyLimit.svelte";
 </script>
 
 <div class:sidebar={!production} class="wrapper">
   <div class="content">
-    <TestParallelExecutions />
+    <ConcurrencyLimit />
   </div>
 </div>
 

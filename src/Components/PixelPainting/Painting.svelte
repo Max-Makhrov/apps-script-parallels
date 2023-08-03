@@ -1,6 +1,6 @@
 <script>
-  import PixelGrid from "./PixelGrid.svelte";
-  import { getRangePixelPintingOptions } from "./pixelpainting";
+  import PixelGrid from "./grid.svelte";
+  import { getRangePixelPintingOptions } from "./painting";
 
   export let data = {
     ssId: "1tS0HIxwHLL_4MKYmc-wRXl3Msb4zV13V6jX7NnWFCu8",
@@ -8,8 +8,12 @@
     rangeAddress: "A1:FC240",
   };
 
+  export function getData() {
+    return data;
+  }
+
   /**
-   * @typedef {import('./pixelpainting').PaintingOptions} Options
+   * @typedef {import('./painting').PaintingOptions} Options
    */
   /**  @type {Options} */
   let gridOptions = getRangePixelPintingOptions(data.rangeAddress);
