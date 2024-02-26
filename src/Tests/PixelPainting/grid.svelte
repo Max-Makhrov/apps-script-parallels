@@ -25,7 +25,6 @@
   }
 
   /**
-   *
    * @param {Number} index
    */
   function paintSquare(index) {
@@ -40,6 +39,7 @@
         grid[i][ii] = color;
       }
     }
+    return `Painted square #${index}`;
   }
 
   // Initialize the grid with empty cells

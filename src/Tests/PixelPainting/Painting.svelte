@@ -2,11 +2,20 @@
   import PixelGrid from "./grid.svelte";
   import { getRangePixelPintingOptions } from "./painting";
 
+  /**
+   * @typedef {Object} PaintingData
+   * @property {String} [ssId]
+   * @property {String} [sheetName]
+   * @property {String} rangeAddress
+   */
+  /** @type PaintingData */
   export let data = {
     ssId: "1tS0HIxwHLL_4MKYmc-wRXl3Msb4zV13V6jX7NnWFCu8",
     sheetName: "Image1Colors",
     rangeAddress: "A1:FC240",
   };
+
+  let visible = true;
 
   export function getData() {
     return data;
@@ -17,6 +26,9 @@
    */
   /**  @type {Options} */
   let gridOptions = getRangePixelPintingOptions(data.rangeAddress);
+  export function getOptions() {
+    return gridOptions;
+  }
 
   let children = [];
 
@@ -28,8 +40,13 @@
    * paints all squares in default color
    */
   export function reset() {
-    gridOptions.gridColors = gridOptions.gridDefaultColors;
-    children.forEach((child) => child.paintSquares());
+    // gridOptions.gridColors = gridOptions.gridDefaultColors;
+    // children.forEach((child) => child.paintSquares());
+
+    visible = false;
+
+    setTimeout(() => (visible = true), 0);
+    console.log("reset");
   }
 
   /**
@@ -41,19 +58,22 @@
     colors = colors || gridOptions.gridChessColors[index];
     gridOptions.gridColors[index] = colors;
     children[index].paintSquares();
+    return `Painted square #${index}`;
   }
 </script>
 
 <div class="grid-container" style="--grid-columns: {gridOptions.squaresWidth}">
-  {#each gridOptions.gridsArray as item, i}
-    <PixelGrid
-      bind:this={children[i]}
-      w={item.width}
-      h={item.height}
-      pixelSize={gridOptions.pixelSize}
-      bind:colorGrid={gridOptions.gridColors[i]}
-    />
-  {/each}
+  {#if visible}
+    {#each gridOptions.gridsArray as item, i}
+      <PixelGrid
+        bind:this={children[i]}
+        w={item.width}
+        h={item.height}
+        pixelSize={gridOptions.pixelSize}
+        bind:colorGrid={gridOptions.gridColors[i]}
+      />
+    {/each}
+  {/if}
 </div>
 
 <style>

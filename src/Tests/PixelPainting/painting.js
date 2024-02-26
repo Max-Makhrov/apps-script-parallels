@@ -3,11 +3,11 @@ import {
   convA1NotationToGridRange,
   convGridRangeToA1Notation,
   setGridDimentions,
-} from "../../Utils/range";
-import { getFilledRectangle } from "../../Utils/rectangles";
+} from "../Utils/range";
+import { getFilledRectangle } from "../Utils/rectangles";
 
 /**
- * @typedef {import('../../Utils/range').Grid} Grid
+ * @typedef {import('../Utils/range').Grid} Grid
  */
 /**
  * @typedef {Object} PaintingOptions

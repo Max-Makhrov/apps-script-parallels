@@ -1,13 +1,11 @@
 <script>
   import { production } from "./gas";
-  import ConcurrencyLimit from "./Components/ConcurrencyLimit.svelte";
-  import SpeedComparison from "./Components/SpeedComparison.svelte";
+  import Tests from "./Tests/Tests.svelte";
 </script>
 
 <div class:sidebar={!production} class="wrapper">
   <div class="content">
-    <ConcurrencyLimit />
-    <SpeedComparison />
+    <Tests />
   </div>
 </div>
 
@@ -17,6 +15,7 @@
     width: 100%;
     height: 100%;
     max-width: 300px;
+    padding: 0;
   }
 
   /* this class only gets applied during local dev
@@ -31,7 +30,8 @@
   }
 
   .content {
-    padding: 15px;
-    display: flex;
+    margin-top: 10px;
+    margin-left: 10px;
+    display: block;
   }
 </style>
