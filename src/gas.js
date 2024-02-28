@@ -45,10 +45,10 @@ function mockAppsScriptExecution(mockResults) {
 /**
  * @typedef {Object} TaskOptions
  * @property {String} functionName - GAS function name
- * @property {Array} args - GAS function arguments
- * @property {*} dummyReturn - dummy value for function to return in local dev
- * @property {Function} reject - handle error
- * @property {Function} resolve - handle result
+ * @property {Array} [args] - GAS function arguments
+ * @property {*} [dummyReturn] - dummy value for function to return in local dev
+ * @property {Function} [reject] - handle error
+ * @property {Function} [resolve] - handle result
  */
 
 /**
@@ -58,16 +58,18 @@ function mockAppsScriptExecution(mockResults) {
 export function getTask(options) {
   var task = async () => {
     let result;
+    let resolve = options.resolve || ((data) => {});
+    let reject = options.reject || ((err) => {});
+    let dymmmyReturn = options.dummyReturn || null;
+    let args = options.args || [];
     try {
-      result = await runGas(
-        options.functionName,
-        options.dummyReturn,
-        ...options.args
-      );
+      result = await runGas(options.functionName, dymmmyReturn, ...args);
     } catch (err) {
-      options.reject(err);
+      console.log(err, err.stack);
+      reject(err);
     }
-    options.resolve(result);
+    resolve(result);
+    return result;
   };
   return task;
 }

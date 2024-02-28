@@ -12,6 +12,26 @@ import { isUndefined } from "./datatypes";
 /**
  *
  * @param {Grid} grid
+ * @param {Array<Array>} data
+ *
+ * @returns {Array<Array>} data
+ */
+export function extractDataByGrid(grid, data) {
+  var result = [],
+    row = [];
+  for (var i = grid.startRowIndex; i < grid.endRowIndex; i++) {
+    row = [];
+    for (var ii = grid.startColumnIndex; ii < grid.endColumnIndex; ii++) {
+      row.push(data[i][ii]);
+    }
+    result.push(row);
+  }
+  return result;
+}
+
+/**
+ *
+ * @param {Grid} grid
  */
 export function setGridDimentions(grid) {
   grid.width = grid.endColumnIndex - grid.startColumnIndex;
@@ -110,7 +130,7 @@ export function convA1NotationToGridRange(a1Notation, sheetName = "") {
     startRowIndex: start?.row && start.row - 1,
     endRowIndex: end?.row ? end.row : start.row,
     startColumnIndex: start && start.col,
-    endColumnIndex: end ? end.col + 1 : 1,
+    endColumnIndex: end ? end.col + 1 : start.col + 1,
   };
   if (gridrange.startRowIndex === null) {
     gridrange.startRowIndex = 0;

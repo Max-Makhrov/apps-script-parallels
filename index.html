@@ -4,8 +4,18 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Apps Script Parallels</title>
+    <script>
+      // for Google policy
+      if (window.trustedTypes && window.trustedTypes.createPolicy) {
+      window.trustedTypes.createPolicy('default', {
+        createHTML: string => string,
+        createScriptURL: string => string,
+        createScript: string => string,
+      });
+    }
+    </script>
   </head>
-  <body>
+  <body style="margin: 0px;">
     <div id="app"></div>
     <script type="module" src="/src/main.js"></script>
   </body>
